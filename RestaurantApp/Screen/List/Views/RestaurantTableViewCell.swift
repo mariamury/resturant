@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AlamofireImage
 
 class RestaurantTableViewCell: UITableViewCell {
 
@@ -14,6 +15,8 @@ class RestaurantTableViewCell: UITableViewCell {
     @IBOutlet weak var makerImageView: UIImageView!
     @IBOutlet weak var restaurantNameLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
+
+    
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -26,4 +29,9 @@ class RestaurantTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
+    func configure(with viewModel: RestaurantListViewModel){
+        restaurantImageView.af_setImage(withURL: viewModel.imageUrl)
+        restaurantNameLabel.text = viewModel.name
+        locationLabel.text = viewModel.distance
+    }
 }
